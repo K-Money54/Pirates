@@ -40,9 +40,58 @@ public class PiratesStep1 {
 
 		// The panel that will hold the components in the frame.
 		JPanel contentPane = new JPanel ();
-
-		// TODO: Add the components to the view
+		contentPane.setPreferredSize(new Dimension(950, 400));
+		contentPane.setLayout(new BorderLayout());
 		
+		//create the right action panel
+		JPanel rightPanel = new JPanel();
+		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
+		contentPane.add(rightPanel, BorderLayout.EAST);
+		
+		//Add score label
+		JLabel scoreTitleLabel = new JLabel("Score");
+		scoreTitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(scoreTitleLabel);
+		
+		JLabel scoreNumberLabel = new JLabel("0");
+		scoreNumberLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(scoreNumberLabel);
+		
+		JLabel actionsTitleLabel = new JLabel("Actions");
+		scoreNumberLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(actionsTitleLabel);
+		
+		JButton newGameButton = new JButton("New Game");
+		newGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(newGameButton);
+		
+		JButton musicButton = new JButton("Music Off");
+		musicButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(musicButton);
+		
+		JButton quitButton = new JButton("Quit");
+		quitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightPanel.add(quitButton);
+		
+		
+		// Add the map
+		JLayeredPane gamePanel = new JLayeredPane();
+		contentPane.add(gamePanel);
+		
+		JLabel mapImage = new JLabel(new ImageIcon("resources/world-map-animals.jpg"));
+		mapImage.setSize(775, 400);
+		gamePanel.add(mapImage);
+		
+		// add ship
+		JLabel shipImage = createScaledImage("resources/pirate-ship.png", 40, 40);
+		shipImage.setSize(40, 40);
+		gamePanel.add(shipImage, Integer.valueOf(100));
+		
+		// Put the ship at a random location
+		Random randomGenerator = new Random();
+		int pirateX = randomGenerator.nextInt(735);
+		int pirateY = randomGenerator.nextInt(360);
+		shipImage.setLocation(pirateX, pirateY);
 
 		// Add the panel to the frame
 		frame.setContentPane(contentPane);
@@ -51,6 +100,12 @@ public class PiratesStep1 {
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+	}
+
+
+	private static JLabel createScaledImage(ImageIcon imageIcon) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
